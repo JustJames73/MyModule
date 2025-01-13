@@ -1,5 +1,27 @@
 ﻿# Add-TimeStamp.ps1
 function Add-TimeStamp {
+<#
+.Synopsis
+   Add a sortable timestamp to the filename using the last modified date of the file
+.DESCRIPTION
+   By default this function will replace file name with a sortable timestamp prefix
+   in the directory where the file is currently located. 
+   Use the -Suffix switch to add the timestamp at the end of the filename. 
+   Use the -Copy switch to create a copy of the file with the new filename.
+.EXAMPLE
+   > Add-TimeStamp -FullName .\Foo.bar
+   Renames the file "Foo.bar" to "2016-11-07T144837_Foo.bar"
+.EXAMPLE
+   > Add-TimeStamp .\Foo.bar -Suffix -CopyItem
+   Copies the file "Foo.bar" to "Foo_2016-11-07T144837.bar"
+.EXAMPLE
+   > Get-ChildItem Foo*.bar | Add-TimeStamp
+   Renames all files in the folder matching "Foo*.bar" with the last modified 
+   timestamp. 
+.NOTES
+   This script was created to aid in creating backup copies of scripts and data files. 
+#>
+
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     [OutputType([String])]
     param(
