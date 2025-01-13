@@ -1,5 +1,43 @@
 ﻿# Generate-RandomPassPhrase.ps1
 function Generate-RandomPassPhrase {
+<#
+.SYNOPSIS
+Generates a random passphrase from an external dictionary list of words.
+
+.DESCRIPTION
+The Generate-RandomPassPhrase function generates a random passphrase using a word list file. 
+The passphrase consists of random words concatenated together with optional padding characters.
+The word list file will have one word per line.
+By default, the function uses a word list file named "all.words" in the current directory.
+The function can also enforce complexity requirements such as case modification and special characters.
+Additionally, it supports banning specific words from the generated passphrase.
+
+.PARAMETER minLength
+The minimum length of the generated passphrase. Default is 15 characters.
+
+.PARAMETER wordListFile
+The path to the word list file. Default is "all.words" in the current directory.
+
+.PARAMETER Iterations
+The number of passphrases to generate. Default is 1. Increment to list additional passswords. 
+
+.PARAMETER Complex
+Switch parameter to enable passphrase complexity. When specified, modifies case and adds special characters between words.
+
+.PARAMETER BannedWords
+An array of words to exclude from the generated passphrase.
+
+.EXAMPLE
+Generate-RandomPassPhrase -minLength 20 -wordListFile "custom.words" -Iterations 3 -Complex -BannedWords @("password", "123456")
+
+Generates 3 random passphrases with a minimum length of 20 characters, using a custom word list file "custom.words".
+Passphrases are complex with modified case and special characters. The words "password" and "123456" are banned.
+
+.NOTES
+This function may require access to external word list files. Ensure appropriate permissions are set.
+#>
+
+
     param (
         [int]$minLength = 15,
         [string]$wordListFile = 'all.words',
