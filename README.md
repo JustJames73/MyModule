@@ -38,12 +38,16 @@ A collection of my frequently used functions
     * Edit the function to change the output fields
    
 ## Additional functions included
+* Convert-CIDRToIPRange
+  * Converts CIDR notation (e.g., 192.168.1.0/24) to a list of IP addresses in the range
+  * Use **-ExcludeNetworkAndBroadcast** switch to exclude network and broadcast addresses
+  * Perfect for enumerating all IPs in a subnet without doing the math manually
 * Generate-RandomPassword
   * Written to deal with some funky password requirements
   * Outputs a raondom password 14-21 characters long
 * SearchForCommandFromModule
   * Requires knowledge of the module name.
-  * Limited use but it was a fun exercise at the time. 
+  * Limited use but it was a fun exercise at the time.
   * Search the script for occurances of any command from the specified module.
   * Output the line number and line with the found commands
 * Write-Color
